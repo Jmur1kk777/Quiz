@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Quiz(models.Model):
     title = models.CharField(max_length=250)
+    image = models.ImageField(upload_to="quiz_image", null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     created = models.DateField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

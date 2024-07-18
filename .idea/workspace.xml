@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="додав моделі до квіз">
-      <change afterPath="$PROJECT_DIR$/media/question_images/images.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quizapp/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quizapp/migrations/0002_quizresult_questionresult.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/quizapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720114318812</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="додав моделі до квіз">
+      <option name="closed" value="true" />
+      <created>1721318636768</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721318636768</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
