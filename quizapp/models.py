@@ -37,3 +37,21 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class QuizResult(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="results")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="results")
+    score = models.IntegerField(default=0)
+    completed_at = models.DateTimeField(auto_now_add=True)
+    completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.quiz
+
+
+class QuestionResult(models.Model):
+    quiz_result = models.ForeignKey(QuizResult, on_delete=models.CASCADE, related_name="responses")
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="responses")
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE,)
+    time = models.IntegerField(default=0)
