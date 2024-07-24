@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="додав моделі до квіз">
-      <change afterPath="$PROJECT_DIR$/quizapp/migrations/0002_quizresult_questionresult.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/quizapp/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/quiz_image/images_1ruYo1K.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/istockphoto-1396814518-612x612.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/no-picture-available-placeholder-thumbnail-260nw-2226533855.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/quizapp/QuestionCreate_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quiz/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Quiz/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Quiz/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Quiz/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quizapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +54,11 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/компас/PycharmProjects/Quiz/manage.py&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\компас\PycharmProjects\Quiz\static\img" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Quiz" />
@@ -111,7 +124,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721318636768</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="додав моделі до квіз">
+      <option name="closed" value="true" />
+      <created>1721324239348</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1721324239348</updated>
+    </task>
+    <task id="LOCAL-00005" summary="додав моделі до квіз">
+      <option name="closed" value="true" />
+      <created>1721324264538</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721324264538</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

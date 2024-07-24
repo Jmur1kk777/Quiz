@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
-from quizapp.forms import QuizCreate
-from quizapp.models import Quiz
+from quizapp.forms import QuizCreate, QuestionCreate
+from quizapp.models import Quiz, Question
 
 
 # Create your views here.
@@ -24,3 +24,16 @@ class QuizCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
+
+
+
+class QuestionCreateView(LoginRequiredMixin, CreateView):
+    model = Question
+    template_name = "quizapp/QuizCreate_form.html"
+    form_class = QuestionCreate
+    success_url = reverse_lazy("quiz-list")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
