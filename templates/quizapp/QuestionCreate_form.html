@@ -3,10 +3,14 @@
 {% block content %}
    <div class="container">
    {% include 'alerts.html' %}
-   <h1 class="text-center">Question Create</h1>
+   <h1 class="text-center">New question</h1>
 <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
             {{ form.as_div }}
+            {{answers.management_form}}
+            {%for answer in answers%}
+                {{answer.as_div}}
+            {% endfor %}
            <button type="submit" class="btn btn-light"> Create </button>
        </form>
 

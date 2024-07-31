@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
-from quizapp.forms import QuizCreate, QuestionCreate
+from quizapp.forms import QuizCreate, QuestionCreate, AnswerFormSet
 from quizapp.models import Quiz, Question
 
 
@@ -14,6 +14,7 @@ class QuizListView(ListView):
     template_name = "quizapp/index.html"
     paginate_by = 10
 
+
 class QuizCreateView(LoginRequiredMixin, CreateView):
     model = Quiz
     template_name = "quizapp/QuizCreate_form.html"
@@ -22,18 +23,30 @@ class QuizCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        self.object = form.save()
         return super().form_valid(form)
 
-
-
+    def get_success_url(self):
+        return reverse_lazy("create-question", kwargs={"quiz_id": self.object.pk})
 
 
 class QuestionCreateView(LoginRequiredMixin, CreateView):
     model = Question
-    template_name = "quizapp/QuizCreate_form.html"
+    template_name = "quizapp/QuestionCreate_form.html"
     form_class = QuestionCreate
     success_url = reverse_lazy("quiz-list")
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        if self.request.POST:
+            data['answers'] = AnswerFormSet(self.request.POST)
+        else:
+            data['answers'] = AnswerFormSet()
+        return data
+
     def form_valid(self, form):
+        quiz_id = self.kwargs['quiz_id']
+        quiz = get_object_or_404(Quiz, id=quiz_id)
         form.instance.author = self.request.user
+        form.instance.quiz = quiz
         return super().form_valid(form)

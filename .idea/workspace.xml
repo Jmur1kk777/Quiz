@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="додав моделі до квіз">
-      <change afterPath="$PROJECT_DIR$/media/quiz_image/images_1ruYo1K.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/istockphoto-1396814518-612x612.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/no-picture-available-placeholder-thumbnail-260nw-2226533855.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/quizapp/QuestionCreate_form.html" afterDir="false" />
+    <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="додав">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Quiz/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Quiz/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Quiz/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Quiz/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/quizapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quizapp/QuestionCreate_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/QuestionCreate_form.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,13 +135,22 @@
       <option name="project" value="LOCAL" />
       <updated>1721324264538</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="додав">
+      <option name="closed" value="true" />
+      <created>1721842531763</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1721842531763</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="." />
     <MESSAGE value="додав моделі до квіз" />
-    <option name="LAST_COMMIT_MESSAGE" value="додав моделі до квіз" />
+    <MESSAGE value="додав" />
+    <option name="LAST_COMMIT_MESSAGE" value="додав" />
   </component>
 </project>
