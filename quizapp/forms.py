@@ -30,5 +30,12 @@ class AnswerForm(forms.ModelForm):
         model = Answer
         fields = ["text", "is_correct"]
 
+    def __init__(self, *args, **kwargs):
+        super(AnswerForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            if field == "is_correct":
+                self.fields[field].widget.attrs.update({'class': 'form-check-input mb-2',})
+            else:
+                self.fields[field].widget.attrs.update({'class': 'form-control mb-2', 'rows':'3' })
 
-AnswerFormSet = forms.inlineformset_factory(Question, Answer, form=AnswerForm,extra=3)
+AnswerFormSet = forms.inlineformset_factory(Question, Answer, form=AnswerForm,extra=4)

@@ -8,9 +8,14 @@
           {% csrf_token %}
             {{ form.as_div }}
             {{answers.management_form}}
-            {%for answer in answers%}
-                {{answer.as_div}}
-            {% endfor %}
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+                {%for answer in answers%}
+                    <div class="col">
+                        {{answer.as_div}}
+                    </div>
+                {% endfor %}
+            </div>
+
            <button type="submit" class="btn btn-light"> Create </button>
        </form>
 

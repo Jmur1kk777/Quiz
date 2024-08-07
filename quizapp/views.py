@@ -12,7 +12,7 @@ class QuizListView(ListView):
     model = Quiz
     context_object_name = "quizes"
     template_name = "quizapp/index.html"
-    paginate_by = 10
+
 
 
 class QuizCreateView(LoginRequiredMixin, CreateView):
@@ -34,7 +34,8 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
     model = Question
     template_name = "quizapp/QuestionCreate_form.html"
     form_class = QuestionCreate
-    success_url = reverse_lazy("quiz-list")
+    def get_success_url(self):
+        return reverse_lazy("create-question", kwargs={"quiz_id": self.object.quiz.pk})
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -49,4 +50,13 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
         quiz = get_object_or_404(Quiz, id=quiz_id)
         form.instance.author = self.request.user
         form.instance.quiz = quiz
+        self.object = form.save()
+
+        context = self.get_context_data()
+        answers = context['answers']
+        if answers.is_valid():
+            answers.instance = self.object
+            answers.save()
+        else:
+            self.render_to_response(self.get_context_data(form=form))
         return super().form_valid(form)
