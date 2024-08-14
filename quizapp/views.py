@@ -39,6 +39,8 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
+        quiz_id = self.kwargs.get('quiz_id')
+        quiz = get_object_or_404(Quiz, pk = quiz_id)
         if self.request.POST:
             data['answers'] = AnswerFormSet(self.request.POST)
         else:
@@ -46,7 +48,7 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
         return data
 
     def form_valid(self, form):
-        quiz_id = self.kwargs['quiz_id']
+        quiz_id = self.kwargs.get('quiz_id')
         quiz = get_object_or_404(Quiz, id=quiz_id)
         form.instance.author = self.request.user
         form.instance.quiz = quiz
