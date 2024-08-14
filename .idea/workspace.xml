@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="додав">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="production deploy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Quiz/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Quiz/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723654384153</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="production deploy">
+      <option name="closed" value="true" />
+      <created>1723655805833</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723655805833</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -186,6 +191,7 @@
     <MESSAGE value="." />
     <MESSAGE value="додав моделі до квіз" />
     <MESSAGE value="додав" />
-    <option name="LAST_COMMIT_MESSAGE" value="додав" />
+    <MESSAGE value="production deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="production deploy" />
   </component>
 </project>
