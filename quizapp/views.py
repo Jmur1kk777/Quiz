@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 
 from quizapp.forms import QuizCreate, QuestionCreate, AnswerFormSet
+from quizapp.migrations.mixins import UserIsOwnerMixin
 from quizapp.models import Quiz, Question
 
 
@@ -40,7 +41,7 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         quiz_id = self.kwargs.get('quiz_id')
-        quiz = get_object_or_404(Quiz, pk = quiz_id)
+        data['quiz'] = get_object_or_404(Quiz, pk = quiz_id)
         if self.request.POST:
             data['answers'] = AnswerFormSet(self.request.POST)
         else:
@@ -52,6 +53,35 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
         quiz = get_object_or_404(Quiz, id=quiz_id)
         form.instance.author = self.request.user
         form.instance.quiz = quiz
+        self.object = form.save()
+
+        context = self.get_context_data()
+        answers = context['answers']
+        if answers.is_valid():
+            answers.instance = self.object
+            answers.save()
+        else:
+            self.render_to_response(self.get_context_data(form=form))
+        return super().form_valid(form)
+
+
+class QuestionUpdateView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
+    model = Question
+    template_name = "quizapp/QuestionCreate_form.html"
+    form_class = QuestionCreate
+    def get_success_url(self):
+        return reverse_lazy("create-question", kwargs={"quiz_id": self.object.quiz.pk})
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['quiz'] = self.object.quiz
+        if self.request.POST:
+            data['answers'] = AnswerFormSet(self.request.POST, instance=self.object)
+        else:
+            data['answers'] = AnswerFormSet(instance=self.object)
+        return data
+
+    def form_valid(self, form):
         self.object = form.save()
 
         context = self.get_context_data()
