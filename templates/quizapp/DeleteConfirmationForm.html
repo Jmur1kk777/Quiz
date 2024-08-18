@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="container">
+   {% include 'alerts.html' %}
+   <h1 class="text-center">Delete Confirmation</h1>
+       <h3>Are you sure</h3>
+<form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            {{ form.as_div }}
+           <button type="submit" class="btn btn-outline-danger">Yes, Delete </button>
+            <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-secondary">No, cancel</a>
+       </form>
+
+   </div>
+
+{% endblock %}

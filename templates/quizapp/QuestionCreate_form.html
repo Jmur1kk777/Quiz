@@ -5,7 +5,23 @@
    {% include 'alerts.html' %}
       <h1>{{quiz.title}}</h1>
        <div>{{quiz.description}}</div>
-   <h3 class="text-center">New question</h3>
+       <div class="row">
+           <div class="col-4">
+               <h4>Question List</h4>
+               {% for question in quiz.questions.all %}
+               <div class="card">
+                   <div class="card-header">
+                       Question {{ forloop.counter }}
+                   </div>
+                  <div class="card-body">
+                    <h6 class="card-title">{{question.text}}</h6>
+                      <a href="{% url 'update-question' question.pk %}" class="stretched-link"></a>
+                  </div>
+                </div>
+               {% endfor %}
+           </div>
+           <div class="col-8">
+                  <h3 class="text-center">New question</h3>
 <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
             {{ form.as_div }}
@@ -18,8 +34,14 @@
                 {% endfor %}
             </div>
 
-           <button type="submit" class="btn btn-light"> Create </button>
+           <button type="submit" class="btn btn-light"> Save </button>
+            {% if question %}
+            <a href="{% url 'delete-question' question.pk %}" class="btn btn-outline-danger">Delete Question</a>
+            {% endif %}
        </form>
+           </div>
+       </div>
+
 
    </div>
 

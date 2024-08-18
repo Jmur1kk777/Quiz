@@ -1,10 +1,10 @@
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from quizapp.forms import QuizCreate, QuestionCreate, AnswerFormSet
-from quizapp.migrations.mixins import UserIsOwnerMixin
+from quizapp.mixins import UserIsOwnerMixin, QuizCanEditMixin
 from quizapp.models import Quiz, Question
 
 
@@ -14,6 +14,12 @@ class QuizListView(ListView):
     context_object_name = "quizes"
     template_name = "quizapp/index.html"
 
+class UserQuizListView(LoginRequiredMixin, QuizListView):
+    template_name = "quizapp/myquizlist.html"
+
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(author=self.request.user)
+        return queryset
 
 
 class QuizCreateView(LoginRequiredMixin, CreateView):
@@ -92,3 +98,20 @@ class QuestionUpdateView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
         else:
             self.render_to_response(self.get_context_data(form=form))
         return super().form_valid(form)
+
+
+class QuestionDeleteView(LoginRequiredMixin, UserIsOwnerMixin, DeleteView):
+    model = Question
+    template_name = "quizapp/DeleteConfirmationForm.html"
+    context_object_name = 'question'
+
+    def get_success_url(self):
+        return reverse_lazy("create-question", kwargs={"quiz_id": self.object.quiz.pk})
+
+
+class QuizDeleteView(LoginRequiredMixin, QuizCanEditMixin, DeleteView):
+    model = Quiz
+    template_name = "quizapp/DeleteConfirmationForm.html"
+    context_object_name = 'quiz'
+    success_url = reverse_lazy("quiz-list")
+
