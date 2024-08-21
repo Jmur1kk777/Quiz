@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="container">
+   {% include 'alerts.html' %}
+       <div class="row">
+           <div class="col-4">
+               {% if quiz.image %}
+                <img src="{{ quiz.image.url }}" class="img-fluid" alt="...">
+             {% else %}
+                <img src="{% static 'img/no-picture-available-placeholder-thumbnail-260nw-2226533855.webp' %}" class="img-fluid" alt="...">
+             {% endif%}
+                     <h1>{{quiz.title}}</h1>
+               <div>{{quiz.description}}</div>
+               <p class="card-text"><small class="text-body-secondary">Updated: {{ quiz.updated }}</small></p>
+               <div class="h4">Author: {{quiz.author.username}}</div>
+           </div>
+           <div class="col-6">
+               <h4>Question List</h4>
+               {% for question in quiz.questions.all %}
+               <div class="card">
+                   <div class="card-header">
+                       Question {{ forloop.counter }}
+                   </div>
+                  <div class="card-body">
+                    <h6 class="card-title">{{question.text}}</h6>
+                      <a href="{% url 'update-question' question.pk %}" class="stretched-link"></a>
+                  </div>
+                </div>
+               {% endfor %}
+           </div>
+
+       </div>
+
+
+   </div>
+
+{% endblock %}

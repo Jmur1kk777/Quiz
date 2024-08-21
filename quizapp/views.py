@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from quizapp.forms import QuizCreate, QuestionCreate, AnswerFormSet
 from quizapp.mixins import UserIsOwnerMixin, QuizCanEditMixin
-from quizapp.models import Quiz, Question
+from quizapp.models import Quiz, Question, QuizLive
 
 
 # Create your views here.
@@ -114,4 +114,19 @@ class QuizDeleteView(LoginRequiredMixin, QuizCanEditMixin, DeleteView):
     template_name = "quizapp/DeleteConfirmationForm.html"
     context_object_name = 'quiz'
     success_url = reverse_lazy("quiz-list")
+
+
+class QuizDetailView(DetailView):
+    model = Quiz
+    template_name = "quizapp/quiz_detail.html"
+
+class QuizLiveCreateView(LoginRequiredMixin, CreateView):
+    model = QuizLive
+    fields = []
+    success_url = reverse_lazy('quiz-list')
+    def form_valid(self, form):
+        form.instance.quiz = get_object_or_404(Quiz, pk=self.kwargs["quiz-id"])
+        form.instance.host = self.request.user
+        form.instance.save()
+        return super().form_valid(form)
 

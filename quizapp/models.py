@@ -1,3 +1,6 @@
+import random
+import string
+
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -40,15 +43,33 @@ class Answer(models.Model):
         return self.text
 
 
+class QuizLive(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="live_quizzes")
+    host = models.ForeignKey(User, on_delete=models.CASCADE, related_name="hosted_quizzes")
+    created_at = models.DateTimeField(auto_now_add=True)
+    invite_code = models.CharField(max_length=100, unique=True, blank=True, null=True)
+
+    def generete_invite_code(self):
+        while True:
+            invite_code = ''.join(random.choices(string.digits, k=10))
+            if not Quiz.objects.filter(invite_code=invite_code).exists():
+                return invite_code
+
+    def save(self, *args, **kwargs):
+        if not self.invite_code:
+            self.invite_code = self.generete_invite_code()
+
+
 class QuizResult(models.Model):
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="results")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="results")
+    quiz_live = models.ForeignKey(QuizLive, on_delete=models.CASCADE, related_name="results")
+    nickname = models.CharField(max_length=100, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="results", null=True, blank=True)
     score = models.IntegerField(default=0)
     completed_at = models.DateTimeField(auto_now_add=True)
     completed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.quiz
+        return self.quiz_live.quiz.title + " - " + self.nickname
 
 
 class QuestionResult(models.Model):
@@ -56,3 +77,4 @@ class QuestionResult(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="responses")
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE,)
     time = models.IntegerField(default=0)
+    score = models.IntegerField(default=0)

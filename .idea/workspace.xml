@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="production deploy">
+      <change afterPath="$PROJECT_DIR$/templates/quizapp/quiz_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizapp/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quizapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -47,11 +54,15 @@
     &quot;Python.manage.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;production&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/компас/PycharmProjects/Quiz/manage.py&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/компас/PycharmProjects/Quiz/templates/quizapp&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\компас\PycharmProjects\Quiz\templates\quizapp" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\компас\PycharmProjects\Quiz\quizapp" />
       <recent name="C:\Users\компас\PycharmProjects\Quiz\static\img" />
     </key>
   </component>
@@ -192,7 +203,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723657912782</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="production deploy">
+      <option name="closed" value="true" />
+      <created>1723978823426</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723978823426</updated>
+    </task>
+    <task id="LOCAL-00014" summary="production deploy">
+      <option name="closed" value="true" />
+      <created>1723985561325</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1723985561325</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
