@@ -9,7 +9,7 @@
           {% csrf_token %}
             {{ form.as_div }}
            <button type="submit" class="btn btn-outline-danger">Yes, Delete </button>
-            <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-secondary">No, cancel</a>
+            <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-outline-primary">No, cancel</a>
        </form>
 
    </div>

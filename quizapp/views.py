@@ -14,6 +14,7 @@ class QuizListView(ListView):
     context_object_name = "quizes"
     template_name = "quizapp/index.html"
 
+
 class UserQuizListView(LoginRequiredMixin, QuizListView):
     template_name = "quizapp/myquizlist.html"
 
@@ -75,6 +76,7 @@ class QuestionUpdateView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
     model = Question
     template_name = "quizapp/QuestionCreate_form.html"
     form_class = QuestionCreate
+
     def get_success_url(self):
         return reverse_lazy("create-question", kwargs={"quiz_id": self.object.quiz.pk})
 

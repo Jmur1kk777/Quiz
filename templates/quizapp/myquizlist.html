@@ -5,8 +5,7 @@
    <div class="container">
    {% include 'alerts.html' %}
    <h1 class="text-center">My Quizzes</h1>
-
-      <a type="button" class="btn btn-light my-2" href="{% url 'create-quiz'%}">Create Quiz </a>
+      <a type="button" class="btn btn-outline-primary my-2" href="{% url 'create-quiz'%}">Create Quiz </a>
       {% for quiz in quizes %}
        <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
