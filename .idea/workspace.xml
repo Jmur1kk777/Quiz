@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="production deploy">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/quizapp/DeleteConfirmationForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/DeleteConfirmationForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/quizapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="production deploy" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -246,7 +241,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724355343284</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="production deploy">
+      <option name="closed" value="true" />
+      <created>1724362446343</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1724362446343</updated>
+    </task>
+    <task id="LOCAL-00020" summary="production deploy">
+      <option name="closed" value="true" />
+      <created>1724362570301</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1724362570301</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
