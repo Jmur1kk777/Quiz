@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-   <div class="container">
+   <div class="container d-flex flex-column justify-content-center align-items-center ">
    {% include 'alerts.html' %}
    <h1 class="text-center">Register</h1>
-       <form method="post">
+       <form method="post" style="max-width: 500px; min-width: 350px" >
           {% csrf_token %}
             {{ form.as_div }}
-           <button type="submit" class="btn btn-light"> Register </button>
-           <a href="{% url 'accounts:login' %}" class="btn btn-outline-white">Login</a>
+           <button type="submit" class="btn btn-primary"> Register </button>
+           <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary">Login</a>
        </form>
 
    </div>

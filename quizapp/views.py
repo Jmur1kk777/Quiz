@@ -119,11 +119,14 @@ class QuizDeleteView(LoginRequiredMixin, QuizCanEditMixin, DeleteView):
 class QuizDetailView(DetailView):
     model = Quiz
     template_name = "quizapp/quiz_detail.html"
+    context_object_name = 'quiz'
+
 
 class QuizLiveCreateView(LoginRequiredMixin, CreateView):
     model = QuizLive
     fields = []
     success_url = reverse_lazy('quiz-list')
+
     def form_valid(self, form):
         form.instance.quiz = get_object_or_404(Quiz, pk=self.kwargs["quiz-id"])
         form.instance.host = self.request.user
