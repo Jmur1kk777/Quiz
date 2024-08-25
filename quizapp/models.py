@@ -3,7 +3,10 @@ import string
 
 from django.db import models
 from django.contrib.auth.models import User
+
 # Create your models here.
+
+
 class Quiz(models.Model):
     title = models.CharField(max_length=250)
     image = models.ImageField(upload_to="quiz_image", null=True, blank=True)
@@ -15,20 +18,43 @@ class Quiz(models.Model):
     def __str__(self):
         return self.title
 
+
 class Question(models.Model):
     QUESTION_TYPES = [
         ("text","Text question"),
         ("image", "Image question"),
         ("video", "Video question")
     ]
+    TIME_LIMITS = [
+        (5, "5 seconds"),
+        (10, "10 seconds"),
+        (20, "20 seconds"),
+        (30, "30 seconds"),
+        (45, "45 seconds"),
+        (60, "1 minute"),
+        (90, "1 minute 30 seconds"),
+        (120, "2 minutes"),
+        (180, "3 minutes"),
+    ]
+
 
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="questions")
     text = models.TextField()
     type = models.CharField(max_length=20, choices=QUESTION_TYPES, default="text")
-    image = models.ImageField(upload_to='question_images/',blank=True, null=True)
-    video = models.FileField(upload_to='question_videos/',blank=True, null=True)
+    media = models.FileField(upload_to='question_media/', blank=True, null=True)
     created = models.DateField(auto_now_add=True)
-    time_limit = models.PositiveIntegerField(blank=True, null=True)
+    time_limit = models.IntegerField(choices=TIME_LIMITS,default=30)
+
+    def save(self, *args, **kwargs):
+        if self.media:
+            if self.media.name.endswith(('.mp4','.avi','.mov','.wmv')):
+                self.type = 'video'
+            elif self.media.name.endswith(('.png','.jpg','.jpeg','.gif', '.webp')):
+                self.type = 'image'
+            else:
+                self.type = 'text'
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.text

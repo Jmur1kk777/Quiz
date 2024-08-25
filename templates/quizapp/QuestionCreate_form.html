@@ -5,8 +5,11 @@
    {% include 'alerts.html' %}
       <h1>{{quiz.title}}</h1>
        <div>{{quiz.description}}</div>
+       <a href="{% url 'create-question' quiz.pk %}" class="btn btn-primary my-3">New Question</a>
+       <a href="{% url 'quiz-detail' quiz.pk %}" class="btn btn-outline-primary my-3">Save Quiz</a>
        <div class="row">
-           <div class="col-4">
+           <div class="col-12 col-md-4">
+
                <h4>Question List</h4>
                {% for question in quiz.questions.all %}
                <div class="card mb-2">
@@ -20,10 +23,13 @@
                 </div>
                {% endfor %}
            </div>
-           <div class="col-8">
+           <div class="col-12 col-md-8">
                   <h3 class="text-center">New question</h3>
 <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
             {{ form.as_div }}
             {{answers.management_form}}
             <div class="row row-cols-1 row-cols-md-2 g-3">
@@ -35,7 +41,7 @@
             </div>
 
            <button type="submit" class="btn btn-primary"> Save </button>
-            {% if question %}
+            {% if question.exists %}
             <a href="{% url 'delete-question' question.pk %}" class="btn btn-outline-danger">Delete Question</a>
             {% endif %}
 

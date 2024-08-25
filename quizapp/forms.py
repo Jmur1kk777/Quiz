@@ -17,12 +17,17 @@ class QuizCreate(forms.ModelForm):
 class QuestionCreate(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ["text", "type", "image", "video", "time_limit"]
+        fields = ["text", "media", "time_limit"]
 
     def __init__(self, *args, **kwargs):
         super(QuestionCreate, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'form-control mb-2', })
+
+        if self.non_field_errors():
+            self.non_field_errors_class = 'alert alert-danger'
+        else:
+            self.non_field_errors_class = ''
 
 
 class AnswerForm(forms.ModelForm):

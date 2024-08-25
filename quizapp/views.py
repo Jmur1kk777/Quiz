@@ -42,6 +42,7 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
     model = Question
     template_name = "quizapp/QuestionCreate_form.html"
     form_class = QuestionCreate
+
     def get_success_url(self):
         return reverse_lazy("create-question", kwargs={"quiz_id": self.object.quiz.pk})
 
@@ -60,11 +61,15 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
         quiz = get_object_or_404(Quiz, id=quiz_id)
         form.instance.author = self.request.user
         form.instance.quiz = quiz
-        self.object = form.save()
+        self.object = form.save(commit=False)
 
         context = self.get_context_data()
         answers = context['answers']
-        if answers.is_valid():
+        if answers.is_valid() and answers.cleaned_data:
+            if not any(answer.cleaned_data.get('is_correct') for answer in answers):
+                form.add_error(None, "Choose correct answer")
+                return self.render_to_response(self.get_context_data(form=form))
+            self.object.save()
             answers.instance = self.object
             answers.save()
         else:
@@ -90,11 +95,15 @@ class QuestionUpdateView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
         return data
 
     def form_valid(self, form):
-        self.object = form.save()
+        self.object = form.save(commit=False)
 
         context = self.get_context_data()
         answers = context['answers']
-        if answers.is_valid():
+        if answers.is_valid() and answers.cleaned_data:
+            if not any(answer.cleaned_data.get('is_correct') for answer in answers):
+                form.add_error(None, "Choose correct answer")
+                return self.render_to_response(self.get_context_data(form=form))
+            self.object.save()
             answers.instance = self.object
             answers.save()
         else:

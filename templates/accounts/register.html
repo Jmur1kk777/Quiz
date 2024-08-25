@@ -6,6 +6,9 @@
    <h1 class="text-center">Register</h1>
        <form method="post" style="max-width: 500px; min-width: 350px" >
           {% csrf_token %}
+           {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
             {{ form.as_div }}
            <button type="submit" class="btn btn-primary"> Register </button>
            <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary">Login</a>
