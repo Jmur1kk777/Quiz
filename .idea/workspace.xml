@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="додали функціонал гри">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/quizapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/quizapp/myquizlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/myquizlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quizapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724850225631</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="додали функціонал гри">
+      <option name="closed" value="true" />
+      <created>1724850914566</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1724850914566</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

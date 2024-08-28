@@ -49,7 +49,7 @@ class Question(models.Model):
         if self.media:
             if self.media.name.endswith(('.mp4','.avi','.mov','.wmv')):
                 self.type = 'video'
-            elif self.media.name.endswith(('.png','.jpg','.jpeg','.gif', '.webp')):
+            elif self.media.name.endswith(('.png','.jpg','.jpeg','.gif','.jfif', '.webp')):
                 self.type = 'image'
             else:
                 self.type = 'text'
