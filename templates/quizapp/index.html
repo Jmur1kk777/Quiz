@@ -7,7 +7,7 @@
    <h1 class="text-center">Quiz</h1>
 
       <a type="button" class="btn btn-primary my-2" href="{% url 'create-quiz'%}">Create Quiz </a>
-       <a type="button" class="btn btn-outline-primary my-2" href="{% url 'create-quiz'%}">My Quizzes </a>
+       <a type="button" class="btn btn-outline-primary my-2" href="{% url 'user-quiz-list'%}">My Quizzes </a>
        <div class="row row-cols-1 row-cols-md-2 g-3">
       {% for quiz in quizes %}
            <div class="col">

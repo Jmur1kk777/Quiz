@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="production deploy">
-      <change afterPath="$PROJECT_DIR$/templates/quizapp/answer_question.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/quizapp/quiz_join.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/quizapp/quiz_live.html" afterDir="false" />
+    <list default="true" id="fd77cbe5-2aba-4d72-bd77-59c1d0bd7680" name="Changes" comment="додали функціонал гри">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quizapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/quizapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/quizapp/quiz_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/quiz_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quizapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quizapp/myquizlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quizapp/myquizlist.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724596286505</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="додали функціонал гри">
+      <option name="closed" value="true" />
+      <created>1724850225631</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1724850225631</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -293,6 +294,7 @@
     <MESSAGE value="додав моделі до квіз" />
     <MESSAGE value="додав" />
     <MESSAGE value="production deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="production deploy" />
+    <MESSAGE value="додали функціонал гри" />
+    <option name="LAST_COMMIT_MESSAGE" value="додали функціонал гри" />
   </component>
 </project>
