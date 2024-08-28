@@ -13,7 +13,10 @@
              {% endif %}
                      <h1 class="my-3" >{{quiz.title}}</h1>
                <div class="mb-3" >{{quiz.description}}</div>
-               <a class="btn btn-primary mb-3 " href="{% url 'create-quiz-live' quiz.pk %}" role="button">Play Live</a>
+               <form action="{% url 'create-quiz-live' quiz.pk %}" method="post">
+                   {% csrf_token %}
+                   <button class="btn btn-primary mb-3 " type="submit">Play Live</button>
+               </form>
                {% if quiz.author == request.user or request.user.is_staff %}
                <a class="btn btn-outline-primary mb-3 " href="{% url 'create-question' quiz.pk %}" role="button">Edit Quiz</a>
                {% else %}

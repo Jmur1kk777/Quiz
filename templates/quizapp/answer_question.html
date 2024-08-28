@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="container">
+   {% include 'alerts.html' %}
+   <h1 class="text-center">Quiz - {{Question.quiz.title}}</h1>
+<form method="post" enctype="multipart/form-data">
+    <h4>{{question.text}}</h4>
+    {% if question.type == 'image' %}
+    <img src="{{ question.media.url }}" class="img-fluid" alt="...">
+    {% elif question.type == 'video' %}
+    <video src="{{ question.media.url }}" controls></video>
+    {% endif %}
+          {% csrf_token %}
+            {{ form.as_div }}
+           <button type="submit" class="btn btn-primary"> Submit </button>
+       </form>
+
+   </div>
+
+{% endblock %}

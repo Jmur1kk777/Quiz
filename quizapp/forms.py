@@ -1,6 +1,6 @@
 from django import forms
 
-from quizapp.models import Quiz, Question, Answer
+from quizapp.models import Quiz, Question, Answer, QuizResult, QuestionResult
 
 
 class QuizCreate(forms.ModelForm):
@@ -44,3 +44,38 @@ class AnswerForm(forms.ModelForm):
                 self.fields[field].widget.attrs.update({'class': 'form-control mb-2', 'rows':'3' })
 
 AnswerFormSet = forms.inlineformset_factory(Question, Answer, form=AnswerForm,extra=4)
+
+
+class QuizJoinForm(forms.ModelForm):
+    class Meta:
+        model = QuizResult
+        fields = ["nickname"]
+
+
+class QuizAnswerForm(forms.ModelForm):
+    answer = forms.ModelChoiceField(queryset=Answer.objects.none(), widget=forms.RadioSelect)
+
+    class Meta:
+        model = QuestionResult
+        fields =['answer']
+
+
+    def __init__(self, *args, **kwargs):
+        question = kwargs.pop('question')
+        super().__init__(*args, **kwargs)
+        self.fields['answer'].queryset = question.answers.all()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

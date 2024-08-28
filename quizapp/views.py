@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
-from quizapp.forms import QuizCreate, QuestionCreate, AnswerFormSet
+from quizapp.forms import QuizCreate, QuestionCreate, AnswerFormSet, QuizJoinForm, QuizAnswerForm
 from quizapp.mixins import UserIsOwnerMixin, QuizCanEditMixin
-from quizapp.models import Quiz, Question, QuizLive
+from quizapp.models import Quiz, Question, QuizLive, QuizResult, QuestionResult
 
 
 # Create your views here.
@@ -136,11 +136,66 @@ class QuizDetailView(DetailView):
 class QuizLiveCreateView(LoginRequiredMixin, CreateView):
     model = QuizLive
     fields = []
-    success_url = reverse_lazy('quiz-list')
+
+    def get_success_url(self):
+        return reverse_lazy("quiz-live-detail", kwargs={"pk": self.object.pk})
 
     def form_valid(self, form):
-        form.instance.quiz = get_object_or_404(Quiz, pk=self.kwargs["quiz-id"])
+        form.instance.quiz = get_object_or_404(Quiz, pk=self.kwargs["pk"])
         form.instance.host = self.request.user
         form.instance.save()
         return super().form_valid(form)
 
+
+class QuizLiveDetailView(LoginRequiredMixin, DetailView):
+    model = QuizLive
+    context_object_name = 'live_quiz'
+    template_name = "quizapp/quiz_live.html"
+
+
+class QuizJoinView(LoginRequiredMixin, CreateView):
+    model = QuizResult
+    template_name = "quizapp/quiz_join.html"
+    form_class = QuizJoinForm
+
+    def form_valid(self, form):
+        form.instance.quiz_live = get_object_or_404(QuizLive, invite_code=self.kwargs["invite_code"])
+        if self.request.user.is_authenticated:
+            form.instance.user = self.request.user
+        form.instance.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("quiz-live-answer", kwargs={"quiz_result_id": self.object.pk})
+
+def answer_question(request, quiz_result_id):
+    quiz_result  = get_object_or_404(QuizResult, id = quiz_result_id)
+    responses = quiz_result.responses.values_list('question', flat=True)
+    question = quiz_result.quiz_live.quiz.questions.exclude(id__in=responses).first()
+    if request.method == 'POST':
+        form = QuizAnswerForm(request.POST, question=question)
+        if form.is_valid():
+            answer = form.cleaned_data['answer']
+            score = 10 if answer.is_correct else 0
+
+            QuestionResult.objects.create(quiz_result=quiz_result, question=question, answer=answer, score=score)
+            quiz_result.score += score
+            quiz_result.save()
+
+            next_question = quiz_result.quiz_live.quiz.questions.exclude(id__in=responses).first()
+            if next_question:
+                return redirect(reverse_lazy("quiz-live-answer", kwargs={"quiz_result_id": quiz_result.pk}))
+            else:
+                quiz_result.completed = True
+                quiz_result.save()
+                return redirect(reverse_lazy("quiz-live-detail", kwargs={"pk": quiz_result.quiz_live.pk}))
+
+    else:
+        form = QuizAnswerForm(question=question)
+    context = {
+        'quiz_result': quiz_result,
+        'question': question,
+        'form': form
+    }
+
+    return render(request, "quizapp/answer_question.html",context)

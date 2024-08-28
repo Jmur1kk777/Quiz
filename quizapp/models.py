@@ -78,12 +78,14 @@ class QuizLive(models.Model):
     def generete_invite_code(self):
         while True:
             invite_code = ''.join(random.choices(string.digits, k=10))
-            if not Quiz.objects.filter(invite_code=invite_code).exists():
+            if not QuizLive.objects.filter(invite_code=invite_code).exists():
                 return invite_code
 
     def save(self, *args, **kwargs):
         if not self.invite_code:
             self.invite_code = self.generete_invite_code()
+            
+        super().save(*args, **kwargs)
 
 
 class QuizResult(models.Model):

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    {% include 'alerts.html' %}
+    <h1 class="text-center">Live Quiz - {{live_quiz.quiz.title}}</h1>
+    <h6>Host: {{live_quiz.host}}</h6>
+    <a type="button" class="btn btn-outline-primary my-2" href="{% url 'quiz-live-join' live_quiz.invite_code %}"
+       target="_blank">Join Quiz </a>
+
+    <h3>Participents</h3>
+    <ol class="list-group list-group-numbered">
+        {% for member in live_quiz.results.all %}
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">{{member.nickname}}</div>
+                Start: {{member.completed_at}}
+            </div>
+            <span class="badge text-bg-primary rounded-pill">{{member.score}}</span>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+
+{% endblock %}
